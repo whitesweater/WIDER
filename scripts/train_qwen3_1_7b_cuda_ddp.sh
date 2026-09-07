@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CACHE_ROOT="${WIDER_CACHE_ROOT:-${HOME}/cache}"
+
+export LAUNCHER_BASENAME="$(basename "$0")"
+export MODEL_PATH="${MODEL_PATH:-${WIDER_QWEN3_1_7B_PATH:-${CACHE_ROOT}/Models/Qwen3-1.7B}}"
+export MODEL_LOG_TAG="${MODEL_LOG_TAG:-qwen3-1.7b}"
+export TRAIN_EPOCHS="${TRAIN_EPOCHS:-10}"
+export LEARNING_RATE="${LEARNING_RATE:-1e-4}"
+export PER_DEVICE_TRAIN_BATCH_SIZE="${PER_DEVICE_TRAIN_BATCH_SIZE:-16}"
+export GRADIENT_ACCUMULATION_STEPS="${GRADIENT_ACCUMULATION_STEPS:-2}"
+export PRJ_DIM="${PRJ_DIM:-2048}"
+export WARMUP_RATIO="${WARMUP_RATIO:-0.03}"
+export LR_SCHEDULER_TYPE="${LR_SCHEDULER_TYPE:-cosine}"
+export WEIGHT_DECAY="${WEIGHT_DECAY:-0.1}"
+export DDP_FIND_UNUSED_PARAMETERS="${DDP_FIND_UNUSED_PARAMETERS:-True}"
+export MAX_TOKEN_NUM="${MAX_TOKEN_NUM:-256}"
+export DISTILL_LOSS_DIV_STD="${DISTILL_LOSS_DIV_STD:-True}"
+export DISTILL_LOSS_FACTOR="${DISTILL_LOSS_FACTOR:-20}"
+export USE_DECODER="${USE_DECODER:-True}"
+
+exec bash "${SCRIPT_DIR}/train_wider_cuda_ddp_common.sh" "$@"
