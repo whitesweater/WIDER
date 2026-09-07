@@ -1,6 +1,6 @@
 # Think Wider: Mitigating Latent Rank Collapse in Implicit Chain-of-Thought Reasoning
 
-Official implementation of **WIDER** (*Widening Implicit reasoning via Dominant-direction Energy Regularization*), a lightweight training objective for improving the geometry of implicit chain-of-thought reasoning. Accepted by EMNLP 2026🎉.
+Official implementation of **WIDER** , a lightweight training objective for improving the geometry of implicit chain-of-thought reasoning. Accepted by EMNLP 2026🎉.
 
 <div align="center">
 [<img src="assets/figures/figure1_latent_heatmaps_stacked2.png" width="600" alt="Latent trajectories from the paper: the baseline repeats similar patterns across six steps, while WIDER shows greater variation between steps.">](assets/figures/figure1_latent_heatmaps_stacked2.pdf)
